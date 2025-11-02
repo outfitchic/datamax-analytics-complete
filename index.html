@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataMax Analytics - Piattaforma Business Intelligence Enterprise</title>
+    <meta name="description" content="Trasforma i tuoi dati in insights azionabili. ROI medio del 11,884% con la nostra piattaforma analytics enterprise.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            /* Colors */
+            --primary-100: #EBF5FF;
+            --primary-500: #007AFF;
+            --primary-700: #0056B3;
+            --neutral-0: #F8F9FA;
+            --neutral-100: #FFFFFF;
+            --neutral-500: #6C757D;
+            --neutral-700: #495057;
+            --neutral-900: #212529;
+            --success: #28A745;
+            --warning: #FFC107;
+            --error: #DC3545;
+            
+            /* Typography */
+            --font-family: 'Inter', sans-serif;
+            
+            /* Shadows */
+            --shadow-md: 0 4px 12px rgba(0, 122, 255, 0.08);
+            --shadow-lg: 0 12px 32px rgba(0, 122, 255, 0.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--neutral-900);
+            background-color: var(--neutral-0);
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Navigation */
+        .nav {
+            background: var(--neutral-100);
+            padding: 16px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-500);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--neutral-700);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-500);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        
+        .hero-title {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--neutral-900);
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--neutral-500);
+            margin-bottom: 32px;
+            max-width: 550px;
+        }
+        
+        .hero-visual {
+            background: var(--neutral-100);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary-500);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-700);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-500);
+            border: 1px solid var(--neutral-300);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-100);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 96px 0;
+        }
+        
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 64px;
+            color: var(--neutral-900);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        
+        .feature-card {
+            background: var(--neutral-100);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        
+        .feature-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--neutral-900);
+        }
+        
+        .feature-description {
+            color: var(--neutral-500);
+            font-size: 16px;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 96px 0;
+            background: var(--neutral-100);
+        }
+        
+        .pricing-card {
+            max-width: 480px;
+            margin: 0 auto;
+            background: var(--neutral-0);
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--primary-500);
+        }
+        
+        .pricing-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--neutral-900);
+        }
+        
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-500);
+            margin-bottom: 8px;
+        }
+        
+        .pricing-period {
+            color: var(--neutral-500);
+            margin-bottom: 32px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--neutral-700);
+        }
+        
+        /* ROI Calculator */
+        .roi-calculator {
+            padding: 96px 0;
+        }
+        
+        .calculator-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        
+        .calculator-inputs {
+            background: var(--neutral-100);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .input-group {
+            margin-bottom: 24px;
+        }
+        
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--neutral-700);
+        }
+        
+        .input-field {
+            width: 100%;
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid var(--neutral-300);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+        
+        .roi-result {
+            text-align: center;
+            padding: 48px;
+            background: var(--neutral-100);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .roi-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--success);
+            margin-bottom: 16px;
+        }
+        
+        .roi-description {
+            color: var(--neutral-500);
+            font-size: 16px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 96px 0;
+            background: var(--neutral-100);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        
+        .testimonial-card {
+            background: var(--neutral-0);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 24px;
+            color: var(--neutral-700);
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--neutral-900);
+        }
+        
+        .testimonial-role {
+            color: var(--neutral-500);
+            font-size: 14px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 96px 0;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--neutral-900);
+        }
+        
+        .cta-subtitle {
+            font-size: 18px;
+            color: var(--neutral-500);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--neutral-900);
+            color: var(--neutral-100);
+            padding: 48px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+        
+        .footer-links a {
+            color: var(--neutral-100);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-500);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content,
+            .calculator-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            .hero-title {
+                font-size: 40px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">DataMax Analytics</a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Prezzi</a></li>
+                    <li><a href="#calculator">ROI Calculator</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Trasforma i Tuoi Dati in ROI</h1>
+                    <p class="hero-subtitle">
+                        La piattaforma analytics enterprise che ha generato un ROI medio dell'11,884% per le aziende leader. 
+                        Dashboard intelligenti, automazione avanzata, insights azionabili.
+                    </p>
+                    <a href="#" class="btn btn-primary" onclick="startFreeTrial()">
+                        <i data-lucide="play-circle"></i>
+                        Inizia Free Trial 14 giorni
+                    </a>
+                </div>
+                <div class="hero-visual">
+                    <div style="background: linear-gradient(135deg, var(--primary-100) 0%, var(--primary-500) 100%); height: 200px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 600;">
+                        <div style="text-align: center;">
+                            <i data-lucide="bar-chart-3" style="width: 48px; height: 48px; margin-bottom: 16px;"></i>
+                            <div>Dashboard Analytics</div>
+                            <div style="font-size: 14px; margin-top: 8px; opacity: 0.8;">Enterprise Intelligence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Perché Scegliere DataMax Analytics</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="trending-up" style="width: 24px; height: 24px; color: var(--primary-500);"></i>
+                    </div>
+                    <h3 class="feature-title">ROI Garantito</h3>
+                    <p class="feature-description">
+                        I nostri clienti vedono un ROI medio del 11,884% entro i primi 6 mesi. 
+                        Analytics predittivi che trasformano dati in profitti.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="brain" style="width: 24px; height: 24px; color: var(--primary-500);"></i>
+                    </div>
+                    <h3 class="feature-title">AI-Powered Insights</h3>
+                    <p class="feature-description">
+                        Machine learning avanzato che identifica pattern nascosti e predice trend di mercato 
+                        prima della concorrenza.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="zap" style="width: 24px; height: 24px; color: var(--primary-500);"></i>
+                    </div>
+                    <h3 class="feature-title">Automazione Intelligente</h3>
+                    <p class="feature-description">
+                        Automatizza report complessi, alert personalizzati e workflow decisionali. 
+                        Risparmia 20+ ore settimanali.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="shield-check" style="width: 24px; height: 24px; color: var(--primary-500);"></i>
+                    </div>
+                    <h3 class="feature-title">Enterprise Security</h3>
+                    <p class="feature-description">
+                        Sicurezza di livello bancario, conformità GDPR, backup automatici e 
+                        infrastruttura cloud scalabile 24/7.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="users" style="width: 24px; height: 24px; color: var(--primary-500);"></i>
+                    </div>
+                    <h3 class="feature-title">Team Collaboration</h3>
+                    <p class="feature-description">
+                        Dashboard condivise, commenti in tempo reale, approval workflow e 
+                        gestione permessi granulari.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="integration" style="width: 24px; height: 24px; color: var(--primary-500);"></i>
+                    </div>
+                    <h3 class="feature-title">Integrazione Totale</h3>
+                    <p class="feature-description">
+                        Connettori nativi con Salesforce, SAP, Oracle, Excel e 200+ altre piattaforme. 
+                        Import automatico dei dati esistenti.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Piano Enterprise</h2>
+            <div class="pricing-card">
+                <h3 class="pricing-title">Analytics Pro Enterprise</h3>
+                <div class="pricing-price">€990</div>
+                <div class="pricing-period">per anno (€82.5/mese)</div>
+                
+                <ul class="pricing-features">
+                    <li>
+                        <i data-lucide="check" style="width: 20px; height: 20px; color: var(--success);"></i>
+                        Dashboard illimitati e personalizzabili
+                    </li>
+                    <li>
+                        <i data-lucide="check" style="width: 20px; height: 20px; color: var(--success);"></i>
+                        AI Predictions & Advanced Analytics
+                    </li>
+                    <li>
+                        <i data-lucide="check" style="width: 20px; height: 20px; color: var(--success);"></i>
+                        Automazione workflow avanzata
+                    </li>
+                    <li>
+                        <i data-lucide="check" style="width: 20px; height: 20px; color: var(--success);"></i>
+                        Team collaboration (utenti illimitati)
+                    </li>
+                    <li>
+                        <i data-lucide="check" style="width: 20px; height: 20px; color: var(--success);"></i>
+                        200+ integrazioni native
+                    </li>
+                    <li>
+                        <i data-lucide="check" style="width: 20px; height: 20px; color: var(--success);"></i>
+                        Supporto prioritario 24/7
+                    </li>
+                    <li>
+                        <i data-lucide="check" style="width: 20px; height: 20px; color: var(--success);"></i>
+                        Security & Compliance avanzata
+                    </li>
+                    <li>
+                        <i data-lucide="check" style="width: 20px; height: 20px; color: var(--success);"></i>
+                        API access completo
+                    </li>
+                </ul>
+                
+                <a href="#" class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="startFreeTrial()">
+                    <i data-lucide="rocket"></i>
+                    Inizia Free Trial Enterprise
+                </a>
+                <p style="margin-top: 16px; font-size: 14px; color: var(--neutral-500);">
+                    ⭐ ROI garantito o rimborso completo
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="roi-calculator" id="calculator">
+        <div class="container">
+            <h2 class="section-title">Calcola il Tuo ROI</h2>
+            <div class="calculator-content">
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label class="input-label">Numero di dipendenti</label>
+                        <input type="number" class="input-field" id="employees" value="50" min="1" onchange="calculateROI()">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Ore settimanali dedicate ai report (per dipendente)</label>
+                        <input type="number" class="input-field" id="hoursPerWeek" value="8" min="0" max="40" onchange="calculateROI()">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Costo orario medio (€)</label>
+                        <input type="number" class="input-field" id="hourlyRate" value="35" min="1" onchange="calculateROI()">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Riduzione tempo reporting (%)</label>
+                        <input type="number" class="input-field" id="timeReduction" value="75" min="10" max="100" onchange="calculateROI()">
+                    </div>
+                </div>
+                
+                <div class="roi-result">
+                    <div class="roi-value" id="roiValue">€0</div>
+                    <div class="roi-description" id="roiDescription">
+                        Risparmio annuale stimato
+                    </div>
+                    <div style="margin-top: 24px; padding: 16px; background: var(--primary-100); border-radius: 8px;">
+                        <strong>Con DataMax Analytics:</strong><br>
+                        • Automazione completa report<br>
+                        • Insights predittivi<br>
+                        • Decisioni data-driven
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Cosa Dicono i Nostri Clienti</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "DataMax ha trasformato il nostro modo di prendere decisioni. Il ROI è stato del 15,000% 
+                        nel primo anno. Non riusciamo più a lavorare senza questa piattaforma."
+                    </p>
+                    <div class="testimonial-author">Marco Rossi</div>
+                    <div class="testimonial-role">CEO, TechCorp Srl</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "L'automazione dei report ci ha fatto risparmiare 25 ore a settimana. 
+                        L'AI predittiva ci ha permesso di anticipare trends e aumentare i profitti del 40%."
+                    </p>
+                    <div class="testimonial-author">Laura Bianchi</div>
+                    <div class="testimonial-role">CFO, FinTech Solutions</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Implementazione in 48 ore, ROI positivo dal primo mese. 
+                        Il supporto team è eccezionale e le integrazioni sono seamless."
+                    </p>
+                    <div class="testimonial-author">Alessandro Verdi</div>
+                    <div class="testimonial-role">CTO, DataDrive Industries</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title">Pronto a Massimizzare il Tuo ROI?</h2>
+            <p class="cta-subtitle">
+                Unisciti a centinaia di aziende che hanno già trasformato i loro dati in profitti. 
+                Free trial di 14 giorni, nessun impegno.
+            </p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" class="btn btn-primary" onclick="startFreeTrial()">
+                    <i data-lucide="rocket"></i>
+                    Inizia Free Trial
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i data-lucide="phone"></i>
+                    Parla con Sales
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#support">Support</a>
+                <a href="#contact">Contatti</a>
+            </div>
+            <p>&copy; 2025 DataMax Analytics. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // ROI Calculator
+        function calculateROI() {
+            const employees = parseInt(document.getElementById('employees').value) || 0;
+            const hoursPerWeek = parseInt(document.getElementById('hoursPerWeek').value) || 0;
+            const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+            const timeReduction = parseFloat(document.getElementById('timeReduction').value) || 0;
+            
+            // Calculate annual savings
+            const currentAnnualCost = employees * hoursPerWeek * hourlyRate * 52;
+            const annualSavings = currentAnnualCost * (timeReduction / 100);
+            const subscriptionCost = 990; // Annual cost
+            
+            const netROI = annualSavings - subscriptionCost;
+            const roiPercentage = ((netROI / subscriptionCost) * 100).toFixed(0);
+            
+            document.getElementById('roiValue').textContent = `€${annualSavings.toLocaleString('it-IT', {maximumFractionDigits: 0})}`;
+            
+            if (netROI > 0) {
+                document.getElementById('roiDescription').innerHTML = 
+                    `Risparmio annuale stimato<br>ROI: +${roiPercentage}% (€${netROI.toLocaleString('it-IT', {maximumFractionDigits: 0})} netti)`;
+            } else {
+                document.getElementById('roiDescription').innerHTML = 
+                    'Contattaci per una configurazione personalizzata';
+            }
+        }
+        
+        // Start free trial
+        function startFreeTrial() {
+            alert('🎉 Free Trial attivato!\n\nSarai reindirizzato alla dashboard di registrazione.\nRiceverai una email di conferma entro 2 minuti.\n\n📧 Support: support@datamax-analytics.com');
+        }
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Initialize calculator
+        calculateROI();
+        
+        // Add fade-in animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        });
+        
+        document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
